@@ -57,5 +57,3 @@ export const fetchCurrentUser = createAsyncThunk(
     }
   }
 );
-
-export { register, login, logout, fetchCurrentUser };
