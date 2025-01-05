@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const BASE_URL = "https://connections-api.goit.global";
 
@@ -38,3 +38,8 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+// Добавляем функцию clearContacts
+export const clearContacts = () => (dispatch) => {
+  dispatch({ type: "contacts/clearContacts" });
+};
