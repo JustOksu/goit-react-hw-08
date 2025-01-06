@@ -24,34 +24,36 @@ const App = () => {
   }
 
   return (
-    <>
-      <Layout />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
         <Route
           path="/register"
           element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterPage />}
-            />
+            <RestrictedRoute redirectTo="/contacts">
+              <RegisterPage />
+            </RestrictedRoute>
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/contacts">
+              <LoginPage />
+            </RestrictedRoute>
           }
         />
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            <PrivateRoute redirectTo="/login">
+              <ContactsPage />
+            </PrivateRoute>
           }
         />
         <Route path="*" element={<p>Page not found</p>} />
-      </Routes>
-    </>
+      </Route>
+    </Routes>
   );
 };
 
