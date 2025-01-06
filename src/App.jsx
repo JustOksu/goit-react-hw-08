@@ -9,6 +9,7 @@ import LoginPage from "./pages/Login/LoginPage";
 import RegisterPage from "./pages/Registration/RegistrationPage";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,31 +24,34 @@ const App = () => {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route
-        path="/register"
-        element={
-          <RestrictedRoute
-            redirectTo="/contacts"
-            component={<RegisterPage />}
-          />
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-        }
-      />
-      <Route
-        path="/contacts"
-        element={
-          <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-        }
-      />
-      <Route path="*" element={<p>Page not found</p>} />
-    </Routes>
+    <>
+      <Layout />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route path="*" element={<p>Page not found</p>} />
+      </Routes>
+    </>
   );
 };
 
